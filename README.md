@@ -28,9 +28,9 @@ https://kadostudy.netlify.app/
 
 ### Study Features
 - **Randomized Cards** - Characters are shuffled for varied practice
+- **Endless Repetitions** - Card sets automatically reset and shuffle for continuous sessions
 - **Immediate Feedback** - Instant correct/incorrect feedback with animations
 - **Session Statistics** - Track correct/incorrect answers in real-time
-- **Session Completion** - Summary with accuracy percentage
 - **Character Information** - Shows romaji and English meaning after answering
 
 ## Getting Started
