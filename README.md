@@ -2,6 +2,9 @@
 
 A comprehensive Vue.js application for studying Japanese characters (Hiragana, Katakana, and Kanji) with Material UI design, flashcard functionality, and progress tracking.
 
+https://kadostudy.netlify.app/
+
+
 ## Features
 
 ### Core Technologies
