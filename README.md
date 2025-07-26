@@ -1,4 +1,4 @@
-# 日本語 Study App 🎌
+# 日本語 Kado Study App 🎌
 
 A comprehensive Vue.js application for studying Japanese characters (Hiragana, Katakana, and Kanji) with Material UI design, flashcard functionality, and progress tracking.
 
@@ -15,7 +15,6 @@ A comprehensive Vue.js application for studying Japanese characters (Hiragana, K
 ### Character Sets
 - ✅ **Hiragana** - 46 basic Japanese syllabary characters
 - ✅ **Katakana** - 46 angular characters for foreign words
-- ✅ **Kanji** - 100+ essential Chinese characters with meanings
 
 ### Interactive Features
 - **Flashcard System** - Type English translations for Japanese characters
@@ -51,10 +50,10 @@ Japanese Study App/
 └── README.md           # Project documentation
 ```
 
-## 🎮 How to Use
+## How to Use
 
 ### Getting Started
-1. **Choose a Character Set** - Select Hiragana, Katakana, or Kanji from the welcome screen
+1. **Choose a Character Set** - Select Hiragana or Katakana from the welcome screen
 2. **Study Session** - Cards are presented one at a time with the Japanese character
 3. **Type Your Answer** - Enter the English translation in the text field
 4. **Check Answer** - Press Enter or click "Check Answer" to submit
@@ -63,14 +62,12 @@ Japanese Study App/
 
 ### Navigation
 - **Back Button** - Return to character set selection
-- **Progress Bar** - Shows current position in the session
 - **Statistics** - View correct/incorrect answers in real-time
 - **Theme Toggle** - Switch between light and dark themes
 - **Stats Button** - View overall progress across all character sets
 
 ### Keyboard Shortcuts
 - `Enter` - Check answer or move to next card
-- `Space` - Show hint (when available)
 - `Ctrl/Cmd + K` - Toggle dark/light theme
 
 ## 🎨 Design Features
@@ -109,7 +106,6 @@ Japanese Study App/
 - **Ripple Effects** - Touch feedback on interactive elements
 - **Text Fields** - Outlined text fields with floating labels
 - **Buttons** - Raised and outlined button variants
-- **Progress Indicators** - Linear progress bars
 - **Icons** - Material Icons throughout the interface
 
 ### jQuery Integration
@@ -130,8 +126,6 @@ Japanese Study App/
 ### Individual Statistics
 - **Correct Answers** - Track successful responses
 - **Total Attempts** - Monitor study frequency
-- **Accuracy Percentage** - Calculate success rate
-- **Progress Bars** - Visual representation of mastery
 
 ### Overall Progress
 - **Combined Statistics** - Aggregate data across all character sets
@@ -139,7 +133,7 @@ Japanese Study App/
 - **Study Distribution** - Balance between character sets
 - **Persistent Storage** - Data saved locally for continuity
 
-## 🌟 Browser Support
+## Browser Support
 
 - ✅ Chrome 90+
 - ✅ Firefox 88+
@@ -154,14 +148,14 @@ Japanese Study App/
 - **Mobile Navigation** - Simplified navigation for small screens
 - **Touch Gestures** - Smooth interactions on touch devices
 
-## 🎯 Performance Features
+## Performance Features
 
 - **CDN Resources** - Fast loading of external libraries
 - **Optimized Animations** - Hardware-accelerated CSS transitions
 - **Efficient Rendering** - Vue.js virtual DOM for performance
 - **Local Storage** - Fast data persistence without server calls
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 Potential features for future versions:
 - [ ] Audio pronunciation for characters
@@ -177,20 +171,6 @@ Potential features for future versions:
 - [ ] JLPT level organization
 - [ ] Offline support (PWA)
 
-## 🤝 Contributing
-
-This is an educational project for Japanese language learning. Feel free to:
-- Fork the repository
-- Add more Kanji characters
-- Improve character hints
-- Enhance the UI/UX
-- Add new study modes
-- Report issues or bugs
-- Suggest improvements
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
