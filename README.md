@@ -172,13 +172,6 @@ Potential features for future versions:
 - [ ] Offline support (PWA)
 
 
-## 🙏 Acknowledgments
-
-- **Vue.js Team** - For the amazing reactive framework
-- **Material Design Team** - For the comprehensive design system
-- **jQuery Team** - For the powerful JavaScript library
-- **Japanese Language Community** - For educational resources and feedback
-
 ## 📚 Educational Resources
 
 This app is designed to complement traditional Japanese language learning methods. For comprehensive study, consider also using:
