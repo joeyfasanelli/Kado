@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#BC002D">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="日本語 Study">
+    <meta name="description" content="Learn Japanese characters (Hiragana, Katakana, and Kanji) with interactive flashcards">
+    <meta name="keywords" content="Japanese, Hiragana, Katakana, Kanji, language learning, flashcards">
+    <title>Japanese Study App - Hiragana, Katakana & Kanji</title>
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Material UI CSS -->
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="mdc-top-app-bar">
+            <div class="mdc-top-app-bar__row">
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <span class="mdc-top-app-bar__title">日本語 Study</span>
+                </section>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" 
+                            @click="toggleTheme" 
+                            aria-label="Toggle theme">
+                        {{ isDarkTheme ? 'light_mode' : 'dark_mode' }}
+                    </button>
+                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" 
+                            @click="showStats = !showStats" 
+                            aria-label="Show statistics">
+                        analytics
+                    </button>
+                </section>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div v-if="!selectedCharacterSet" class="welcome-screen">
+                <div class="mdc-card welcome-card">
+                    <div class="mdc-card__primary-action">
+                        <div class="card-content">
+                            <h1 class="welcome-title">Welcome to 日本語 Study</h1>
+                            <p class="welcome-subtitle">Choose a character set to begin studying</p>
+                            
+                            <div class="character-set-grid">
+                                <div class="character-set-card" @click="selectCharacterSet('hiragana')">
+                                    <div class="character-set-icon">あ</div>
+                                    <h3>Hiragana</h3>
+                                    <p>Basic Japanese syllabary</p>
+                                    
+                                </div>
+                                
+                                <div class="character-set-card" @click="selectCharacterSet('katakana')">
+                                    <div class="character-set-icon">ア</div>
+                                    <h3>Katakana</h3>
+                                    <p>Used for foreign words</p>
+                                    
+                                </div>
+                                
+                                <!-- <div class="character-set-card" @click="selectCharacterSet('kanji')">
+                                    <div class="character-set-icon">漢</div>
+                                    <h3>Kanji</h3>
+                                    <p>Chinese characters</p>
+                                    
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study Session -->
+            <div v-else class="study-session">
+                <!-- Header with back button and stats -->
+                <div class="session-header">
+                    <button class="mdc-icon-button material-icons" @click="goBack">
+                        arrow_back
+                    </button>
+                    <div class="session-info">
+                        <h2>{{ getCharacterSetTitle() }}</h2>
+                        <div class="session-stats">
+                            <span class="stat-item">
+                                <span class="material-icons">check_circle</span>
+                                {{ correctAnswers }}
+                            </span>
+                            <span class="stat-item">
+                                <span class="material-icons">cancel</span>
+                                {{ incorrectAnswers }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flashcard -->
+                <div class="flashcard-container">
+                    <div class="mdc-card flashcard" :class="{ 'flipped': showAnswer }">
+                        <div class="mdc-card__primary-action">
+                            <div class="card-content">
+                                <div class="card-front" v-if="!showAnswer">
+                                    <div class="character-display">
+                                        <span class="japanese-character">{{ currentCard.character }}</span>
+                                    </div>
+                                    <div class="instruction">
+                                        <p>Type the English translation:</p>
+                                    </div>
+                                    <div class="input-container">
+                                        <label class="mdc-text-field mdc-text-field--outlined">
+                                            <span class="mdc-notched-outline">
+                                                <span class="mdc-notched-outline__leading"></span>
+                                                <span class="mdc-notched-outline__notch">
+                                                    <span class="mdc-floating-label">Answer</span>
+                                                </span>
+                                                <span class="mdc-notched-outline__trailing"></span>
+                                            </span>
+                                            <input type="text" 
+                                                   class="mdc-text-field__input" 
+                                                   v-model="userAnswer"
+                                                   @keyup.enter="checkAnswer"
+                                                   @input="onInput"
+                                                   @focus="onInput"
+                                                   :disabled="showAnswer"
+                                                   ref="answerInput">
+                                        </label>
+                                        <button class="mdc-button mdc-button--raised" 
+                                                @click="checkAnswer"
+                                                :disabled="!userAnswer.trim() || showAnswer">
+                                            <span class="mdc-button__ripple"></span>
+                                            <span class="mdc-button__label">Check Answer</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-back" v-else>
+                                    <div class="result-display">
+                                        <div class="result-icon" :class="isCorrect ? 'correct' : 'incorrect'">
+                                            <span class="material-icons">
+                                                {{ isCorrect ? 'check_circle' : 'cancel' }}
+                                            </span>
+                                        </div>
+                                        <div class="character-info">
+                                            <span class="japanese-character">{{ currentCard.character }}</span>
+                                            <span class="romaji">{{ currentCard.romaji }}</span>
+                                            <span class="english-meaning">{{ currentCard.english }}</span>
+                                        </div>
+                                        <div class="feedback-message" :class="isCorrect ? 'correct' : 'incorrect'">
+                                            {{ isCorrect ? 'Correct!' : 'Incorrect. The answer was: ' + currentCard.english }}
+                                        </div>
+                                    </div>
+                                    <div class="action-buttons">
+                                        <button class="mdc-button mdc-button--outlined" @click="nextCard">
+                                            <span class="mdc-button__ripple"></span>
+                                            <span class="mdc-button__label">Next Card</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Statistics Modal -->
+            <div v-if="showStats" class="stats-modal" @click="closeStatsModal">
+                <div class="mdc-card stats-card" @click.stop>
+                    <div class="card-content">
+                        <div class="stats-header">
+                            <h3>Study Statistics</h3>
+                            <button class="mdc-icon-button material-icons" @click="showStats = false">
+                                close
+                            </button>
+                        </div>
+                        
+                                                 <div class="stats-grid">
+                             <div class="stat-card">
+                                 <h4>Hiragana</h4>
+                                 <p>Correct: {{ stats.hiragana.correct }} | Total: {{ stats.hiragana.total }}</p>
+                             </div>
+                             
+                             <div class="stat-card">
+                                 <h4>Katakana</h4>
+                                 <p>Correct: {{ stats.katakana.correct }} | Total: {{ stats.katakana.total }}</p>
+                             </div>
+                             
+                             <div class="stat-card">
+                                 <h4>Kanji</h4>
+                                 <p>Correct: {{ stats.kanji.correct }} | Total: {{ stats.kanji.total }}</p>
+                             </div>
+                         </div>
+                        
+                                                 <div class="stats-summary">
+                             <h4>Overall Statistics</h4>
+                             <p>Total Correct: {{ stats.hiragana.correct + stats.katakana.correct + stats.kanji.correct }}</p>
+                             <p>Total Attempts: {{ stats.hiragana.total + stats.katakana.total + stats.kanji.total }}</p>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Material UI JS -->
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html> 

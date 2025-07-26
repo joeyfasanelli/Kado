@@ -1,0 +1,33 @@
+{
+  "name": "japanese-study-app",
+  "version": "1.0.0",
+  "description": "A comprehensive Vue.js application for studying Japanese characters (Hiragana, Katakana, and Kanji) with Material UI design",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8080 -c-1",
+    "dev": "npx http-server -p 8080 -c-1 -o",
+    "build": "echo 'No build step required - static files only'",
+    "deploy": "echo 'Ready for deployment - upload all files to your hosting service'"
+  },
+  "keywords": [
+    "japanese",
+    "hiragana",
+    "katakana",
+    "kanji",
+    "language-learning",
+    "vue.js",
+    "material-ui",
+    "flashcards",
+    "education"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/japanese-study-app.git"
+  },
+  "homepage": "https://yourusername.github.io/japanese-study-app"
+} 
