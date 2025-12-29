@@ -16,8 +16,8 @@ https://kadostudy.netlify.app/
 - **Material UI** - Google's Material Design components and theming
 
 ### Character Sets
-- ✅ **Hiragana** - 46 basic Japanese syllabary characters
-- ✅ **Katakana** - 46 angular characters for foreign words
+- **Hiragana** - 46 basic Japanese syllabary characters
+- **Katakana** - 46 angular characters for foreign words
 
 ### Interactive Features
 - **Flashcard System** - Type English translations for Japanese characters
@@ -73,7 +73,7 @@ Japanese Study App/
 - `Enter` - Check answer or move to next card
 - `Ctrl/Cmd + K` - Toggle dark/light theme
 
-## 🎨 Design Features
+## Design Features
 
 ### Material Design
 - **Material UI Components** - Cards, buttons, text fields, and progress bars
@@ -95,7 +95,7 @@ Japanese Study App/
 - **Smooth Transitions** - Animated theme switching
 - **Material Design Compliant** - Follows Material Design dark theme guidelines
 
-## 🔧 Technical Implementation
+## Technical Implementation
 
 ### Vue.js Features
 - **Reactive Data Binding** - Automatic UI updates
@@ -124,7 +124,7 @@ Japanese Study App/
 - **Romaji Pronunciation** - Japanese pronunciation guide
 - **English Meanings** - Clear English translations
 
-## 📊 Progress Tracking
+## Progress Tracking
 
 ### Individual Statistics
 - **Correct Answers** - Track successful responses
@@ -138,13 +138,13 @@ Japanese Study App/
 
 ## Browser Support
 
-- ✅ Chrome 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Edge 90+
-- ✅ Mobile browsers (iOS Safari, Chrome Mobile)
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+- Mobile browsers (iOS Safari, Chrome Mobile)
 
-## 📱 Mobile Features
+## Mobile Features
 
 - **Touch-friendly Interface** - Large buttons and touch targets
 - **Responsive Layout** - Optimized for mobile screens
@@ -175,7 +175,7 @@ Potential features for future versions:
 - [ ] Offline support (PWA)
 
 
-## 📚 Educational Resources
+## Educational Resources
 
 This app is designed to complement traditional Japanese language learning methods. For comprehensive study, consider also using:
 - Textbooks and workbooks
@@ -186,6 +186,6 @@ This app is designed to complement traditional Japanese language learning method
 
 ---
 
-**Built with ❤️ for Japanese language learners**
+**Built for Japanese language learners**
 
 *日本語 Study App - Making Japanese character learning fun and effective* 
